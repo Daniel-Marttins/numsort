@@ -31,7 +31,7 @@ public class Raffle {
     private String description;
 
     @NotBlank(message = "Status cannot be null")
-    @Column(columnDefinition = "VARCHAR(1) DEFAULT 'A'", nullable = false)
+    @Column(columnDefinition = "VARCHAR(1)", nullable = false)
     private String status;
 
     @NotNull(message = "Price cannot be null")

@@ -45,6 +45,9 @@ public class User {
     @OneToMany(mappedBy = "ownerId", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Raffle> raffles;
 
+    @OneToMany(mappedBy = "ownerId", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Account> accounts;
+
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", nullable = false)
     private LocalDateTime createdAt;
 

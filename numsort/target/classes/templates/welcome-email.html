@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo(a) ao NumSort+!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            color: #555;
+            line-height: 1.6;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #218838;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Olá, ${username}!</h2>
+    <p>Estamos muito felizes em recebê-lo(a) no <strong>NumSort+</strong>. Sua conta foi criada com sucesso e você já pode acessar nossa plataforma!</p>
+    <p><strong>Seus dados de login:</strong></p>
+    <p>
+        <strong>Nome de usuário:</strong> ${username} <br>
+        <strong>Senha:</strong> ${password}
+    </p>
+    <p>Recomendamos que altere sua senha ao fazer login pela primeira vez para garantir sua segurança.</p>
+
+    <a href="[LINK-PARA-LOGIN]" class="btn">Acessar minha conta</a>
+
+    <p class="footer">
+        Se você tiver alguma dúvida ou precisar de ajuda, não hesite em nos contatar. <br>
+        Atenciosamente, <br>
+        Equipe de Suporte do NumSort+
+    </p>
+</div>
+</body>
+</html>

@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class AppController {
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public ResponseEntity<?> appTestRequest() {
-        return ResponseEntity.ok().body("Api working correctly...");
+    public String appTestRequest() {
+        return "Validation";
     }
 
 }

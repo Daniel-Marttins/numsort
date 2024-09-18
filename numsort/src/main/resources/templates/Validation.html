@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="image/png" sizes="16x16" rel="icon" th:href="@{/icons/icons8-selecionado-fluent-16.png}">
+    <title>Validação da API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            text-align: center;
+            padding: 25px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2C3E50;
+            margin-bottom: 20px;
+        }
+
+        .status-ok {
+            color: green;
+            font-weight: bold;
+        }
+
+        .message {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        img {
+            max-width: 100px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <img src="https://img.icons8.com/fluency/48/checkmark--v1.png" alt="API Status Image" />
+    <h1>Validação da API</h1>
+    <p class="status-ok">Status: OK - A API respondeu corretamente!</p>
+    <p class="message">
+        A API está funcionando corretamente se você estiver vendo esta página sem erros.
+    </p>
+</div>
+</body>
+</html>

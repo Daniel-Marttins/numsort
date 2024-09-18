@@ -1,6 +1,7 @@
 package com.outbrick.numsort.services;
 
 import com.outbrick.numsort.entities.User;
+import com.outbrick.numsort.exceptions.UserAlreadyExistsException;
 import com.outbrick.numsort.repositories.UserRepository;
 import com.outbrick.numsort.usecases.SystemUtils;
 import jakarta.mail.MessagingException;
@@ -26,6 +27,11 @@ public class UserService {
 
     @Transactional
     public User saveUser(User user) {
+
+        if (userRepository.findByEmail(user.getEmail()) != null) {
+            throw new UserAlreadyExistsException("Usuário com este e-mail já está cadastrado");
+        }
+
         String password = SystemUtils.getInstance().generateRandomString(6);
         user.setPassword(SystemUtils.getInstance().encryptPassword(password));
         User savedUser = userRepository.save(user);

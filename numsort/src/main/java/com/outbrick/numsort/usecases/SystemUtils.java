@@ -7,12 +7,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.security.SecureRandom;
 
+@Getter
 public class SystemUtils {
 
     // Método estático para acessar a única instância da classe
     // Instância única da classe
     @Getter
     private static final SystemUtils instance = new SystemUtils();
+
+    // Torna o PasswordEncoder e o ModelMapper atributos estáticos
+    public static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    public static final ModelMapper modelMapper = new ModelMapper();
 
     // Construtor privado para impedir a criação de novas instâncias
     private SystemUtils() {}

@@ -48,6 +48,9 @@ public class Raffle {
     @Column(nullable = true)
     private List<Integer> numbers;
 
+    @Column(columnDefinition = "TEXT", nullable = true)
+    private String sharedLink;
+
     @NotNull(message = "Owner cannot be null")
     @ManyToOne
     @JoinColumn(name = "ownerId", referencedColumnName = "id", nullable = false)

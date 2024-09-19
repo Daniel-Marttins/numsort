@@ -30,7 +30,6 @@ public class User {
     private String email;
 
     @Column(columnDefinition = "VARCHAR(100)", length = 100, nullable = false)
-    @NotBlank(message = "Password cannot be null")
     private String password;
 
     @Column(columnDefinition = "TEXT", nullable = true)

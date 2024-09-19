@@ -1,10 +1,9 @@
 package com.outbrick.numsort.services;
 
 import com.outbrick.numsort.entities.User;
-import com.outbrick.numsort.exceptions.UserAlreadyExistsException;
+import com.outbrick.numsort.exceptions.UserExceptions;
 import com.outbrick.numsort.repositories.UserRepository;
 import com.outbrick.numsort.usecases.SystemUtils;
-import jakarta.mail.MessagingException;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +28,7 @@ public class UserService {
     public User saveUser(User user) {
 
         if (userRepository.findByEmail(user.getEmail()) != null) {
-            throw new UserAlreadyExistsException("Usuário com este e-mail já está cadastrado");
+            throw new UserExceptions.UserExistsException("Usuário com este e-mail já está cadastrado");
         }
 
         String password = SystemUtils.getInstance().generateRandomString(6);
@@ -46,7 +45,8 @@ public class UserService {
 
     @Transactional
     public User getUser(Long id) {
-        return userRepository.findById(id).orElse(null);
+        if(userRepository.findById(id).isEmpty()) throw new UserExceptions.UserNotFoundException("Usuário com não encontrado!");
+        return userRepository.findById(id).get();
     }
 
     @Transactional

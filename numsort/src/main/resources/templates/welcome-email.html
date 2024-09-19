@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bem-vindo(a) ao NumSort+!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,7 +15,7 @@
         .container {
             background-color: #ffffff;
             width: 100%;
-            max-width: 600px;
+            max-width: 700px;
             margin: 50px auto;
             padding: 20px;
             border: 1px solid #ddd;
@@ -23,10 +24,26 @@
         }
         h2 {
             color: #333;
+            margin-bottom: 20px;
         }
-        p {
+        p, li {
             color: #555;
             line-height: 1.6;
+        }
+        ul {
+            padding-left: 20px;
+            list-style: none;
+        }
+        ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        ul li i {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #28a745;
         }
         .btn {
             display: inline-block;
@@ -45,20 +62,68 @@
             font-size: 0.9em;
             color: #888;
         }
+        h3 {
+            color: #333;
+            margin-top: 20px;
+        }
+        .section-icon {
+            margin-right: 10px;
+            color: #28a745;
+        }
     </style>
 </head>
 <body>
 <div class="container">
-    <h2>Olá, ${username}!</h2>
+    <h2>Olá, [[${username}]]!</h2>
     <p>Estamos muito felizes em recebê-lo(a) no <strong>NumSort+</strong>. Sua conta foi criada com sucesso e você já pode acessar nossa plataforma!</p>
     <p><strong>Seus dados de login:</strong></p>
     <p>
-        <strong>Nome de usuário:</strong> ${username} <br>
-        <strong>Senha:</strong> ${password}
+        <strong>Nome de usuário:</strong> [[${username}]] <br>
+        <strong>Senha:</strong> [[${password}]]
     </p>
     <p>Recomendamos que altere sua senha ao fazer login pela primeira vez para garantir sua segurança.</p>
 
     <a href="[LINK-PARA-LOGIN]" class="btn">Acessar minha conta</a>
+
+    <h2><i class="fas fa-info-circle section-icon"></i>Avisos Importantes sobre a Plataforma de Sorteios</h2>
+    <p>Bem-vindo à nossa plataforma de sorteios! Antes de começar a participar ou criar sorteios, queremos que você compreenda como nosso sistema funciona, como as cobranças são realizadas e o que significa ao cadastrar sua conta.</p>
+
+    <h3><i class="fas fa-cogs section-icon"></i>1. Como Funciona a Plataforma?</h3>
+    <p>Nossa plataforma permite que qualquer usuário crie e gerencie sorteios de forma automatizada. Os participantes podem adquirir números de sorteio e, quando todos os números forem comprados, o sorteio é automaticamente realizado.</p>
+    <p>Após a realização do sorteio, o valor arrecadado é transferido diretamente para o responsável pelo sorteio, descontando nossa taxa de serviço.</p>
+
+    <h3><i class="fas fa-money-bill-wave section-icon"></i>2. Como é Feita a Cobrança?</h3>
+    <p>A plataforma cobra uma taxa de serviço baseada no valor total arrecadado em cada sorteio. Essa taxa é escalonada, o que significa que o percentual varia de acordo com o valor do sorteio.</p>
+    <ul>
+        <li><i class="fas fa-angle-right"></i> Para sorteios de menor valor, a taxa é menor.</li>
+        <li><i class="fas fa-angle-right"></i> Sorteios de maior valor terão uma taxa proporcionalmente ajustada.</li>
+        <li><i class="fas fa-angle-right"></i> O valor da taxa é sempre informado antes da realização do sorteio para transparência.</li>
+    </ul>
+    <p>Essa taxa cobre os custos operacionais da plataforma, incluindo processamento de pagamentos e manutenção de nossos sistemas de segurança e automatização.</p>
+
+    <h3><i class="fas fa-exchange-alt section-icon"></i>3. Transferência de Fundos</h3>
+    <p>Assim que o sorteio é concluído, o valor arrecadado (descontada a taxa da plataforma) será transferido automaticamente para a conta cadastrada pelo organizador do sorteio. A transferência pode ser feita por meio de:</p>
+    <ul>
+        <li><i class="fas fa-key"></i> Chave PIX (CPF, e-mail, telefone) ou</li>
+        <li><i class="fas fa-university"></i> Conta bancária informada no momento do cadastro.</li>
+    </ul>
+    <p>Certifique-se de que os dados fornecidos estejam corretos, pois qualquer erro poderá atrasar a liberação dos fundos.</p>
+
+    <h3><i class="fas fa-lock section-icon"></i>4. Segurança e Automação</h3>
+    <p>Todos os pagamentos e transferências são processados de forma automática e segura. Utilizamos serviços de pagamento integrados, como o Mercado Pago, para garantir a segurança e rapidez nas transações.</p>
+    <p>Além disso, nossa plataforma garante a imparcialidade e transparência em todos os sorteios realizados. Uma vez que o sorteio é finalizado, o sistema seleciona automaticamente o vencedor de forma justa e o resultado é comunicado a todos os participantes.</p>
+
+    <h3><i class="fas fa-gavel section-icon"></i>5. Termos de Uso e Concordância</h3>
+    <p>Ao cadastrar-se em nossa plataforma e inserir seus dados de pagamento, você concorda com os nossos Termos de Uso e Política de Privacidade. Isso inclui:</p>
+    <ul>
+        <li><i class="fas fa-check-circle"></i> A aceitação das taxas cobradas pela plataforma.</li>
+        <li><i class="fas fa-check-circle"></i> A utilização dos seus dados conforme descrito na nossa Política de Privacidade.</li>
+        <li><i class="fas fa-check-circle"></i> O cumprimento das regras e procedimentos definidos para a criação e participação em sorteios.</li>
+    </ul>
+    <p><strong>Importante:</strong> Não nos responsabilizamos por sorteios que não sigam as regras definidas pelos organizadores, como prazos e recompensas. Nossa função é apenas de intermediário no processo de gestão de pagamentos e sorteios automatizados.</p>
+
+    <h3><i class="fas fa-headset section-icon"></i>6. Suporte e Contato</h3>
+    <p>Se você tiver qualquer dúvida ou encontrar problemas durante o uso da plataforma, nossa equipe de suporte está disponível para ajudar. Basta entrar em contato pelo canal de suporte no painel da plataforma.</p>
 
     <p class="footer">
         Se você tiver alguma dúvida ou precisar de ajuda, não hesite em nos contatar. <br>

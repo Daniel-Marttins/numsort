@@ -14,4 +14,10 @@ public class UserExceptions extends RuntimeException {
         }
     }
 
+    public static class UserUnauthorizedException extends RuntimeException {
+        public UserUnauthorizedException(String message) {
+            super(message);
+        }
+    }
+
 }

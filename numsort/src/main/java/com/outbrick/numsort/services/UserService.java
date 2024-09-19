@@ -1,5 +1,7 @@
 package com.outbrick.numsort.services;
 
+import com.outbrick.numsort.entities.Account;
+import com.outbrick.numsort.entities.Raffle;
 import com.outbrick.numsort.entities.User;
 import com.outbrick.numsort.exceptions.UserExceptions;
 import com.outbrick.numsort.repositories.UserRepository;
@@ -21,6 +23,8 @@ public class UserService {
 
     @Autowired
     private EmailService emailService;
+
+    PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     private final ModelMapper modelMapper = new ModelMapper();
 
@@ -57,27 +61,37 @@ public class UserService {
     @Transactional
     public User getByLogin(String email, String password) {
         User user = userRepository.findByEmail(email);
-        if(user != null) {
-            PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-            if (passwordEncoder.matches(password, user.getPassword())) return user;
-            return null;
-        }
-        return null;
+
+        if (user == null) throw new UserExceptions.UserUnauthorizedException("Usuário não encontrado com o email fornecido.");
+        if (!passwordEncoder.matches(password, user.getPassword())) throw new UserExceptions.UserUnauthorizedException("Senha incorreta.");
+
+        return user;
     }
 
     @Transactional
     public User updateUser(Long id, User updatedUser) {
-        User existingUser = userRepository.findById(id).orElse(null);
-        if(existingUser != null) {
-            modelMapper.map(updatedUser, existingUser);
-            return userRepository.save(existingUser);
-        };
-        return null;
+        return userRepository.findById(id)
+                .map(existingUser -> {
+
+                    List<Account> existingAccounts = existingUser.getAccounts();
+                    List<Raffle> existingRaffles = existingUser.getRaffles();
+
+                    updatedUser.setPassword(existingUser.getPassword());
+                    modelMapper.map(updatedUser, existingUser);
+
+                    existingUser.setAccounts(existingAccounts);
+                    existingUser.setRaffles(existingRaffles);
+
+                    return userRepository.save(existingUser);
+                })
+                .orElseThrow(() -> new UserExceptions.UserNotFoundException(STR."Usuário com ID \{id} não encontrado"));
     }
 
     @Transactional
     public void deleteUser(Long id) {
-        userRepository.deleteById(id);
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UserExceptions.UserNotFoundException(STR."Usuário com ID \{id} não encontrado"));
+        userRepository.delete(user);
     }
 
 }

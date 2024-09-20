@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.rmi.MarshalException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -45,6 +44,7 @@ public class Raffle {
     @Column(nullable = true)
     private List<String> imgUrls;
 
+    @ElementCollection
     @Column(nullable = true)
     private List<Integer> numbers;
 
@@ -57,7 +57,7 @@ public class Raffle {
     private User ownerId;
 
     @OneToMany(mappedBy = "raffleId")
-    private List<Holdings> numberHoldings;
+    private List<Holding> numberHoldings;
 
     @NotNull(message = "Create date cannot be null")
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", nullable = false)

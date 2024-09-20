@@ -24,10 +24,6 @@ public class UserService {
     @Autowired
     private EmailService emailService;
 
-    PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
-    private final ModelMapper modelMapper = new ModelMapper();
-
     @Transactional
     public User saveUser(User user) {
 
@@ -63,7 +59,7 @@ public class UserService {
         User user = userRepository.findByEmail(email);
 
         if (user == null) throw new UserExceptions.UserUnauthorizedException("Usuário não encontrado com o email fornecido.");
-        if (!passwordEncoder.matches(password, user.getPassword())) throw new UserExceptions.UserUnauthorizedException("Senha incorreta.");
+        if (!SystemUtils.passwordEncoder.matches(password, user.getPassword())) throw new UserExceptions.UserUnauthorizedException("Senha incorreta.");
 
         return user;
     }
@@ -77,7 +73,7 @@ public class UserService {
                     List<Raffle> existingRaffles = existingUser.getRaffles();
 
                     updatedUser.setPassword(existingUser.getPassword());
-                    modelMapper.map(updatedUser, existingUser);
+                    SystemUtils.modelMapper.map(updatedUser, existingUser);
 
                     existingUser.setAccounts(existingAccounts);
                     existingUser.setRaffles(existingRaffles);
